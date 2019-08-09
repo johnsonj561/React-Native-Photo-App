@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@aws-amplify/auth": "^1.2.30",
+    "@react-native-community/cameraroll": "^1.1.1",
     "@types/react-native-vector-icons": "^6.4.1",
     "@types/styled-components": "^4.1.18",
     "amazon-cognito-identity-js": "^3.0.15",

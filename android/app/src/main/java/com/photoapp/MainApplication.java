@@ -3,6 +3,7 @@ package com.photoapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.cameraroll.CameraRollPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import com.amazonaws.RNAWSCognitoPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new CameraRollPackage(),
             new ReanimatedPackage(),
             new RNAWSCognitoPackage(),
             new RNGestureHandlerPackage(),

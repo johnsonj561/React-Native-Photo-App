@@ -10,13 +10,13 @@ import { TouchableCard } from '../../components/touchable-card';
 export interface DashboardProps extends NavigationScreenProps<{}> {}
 
 export const Dashboard = (props: DashboardProps) => {
-  const onViewPhotos = () => props.navigation.navigate('Gallery');
+  const onViewPhotos = () => props.navigation.navigate('TinderGallery');
   const onChangePassword = () => props.navigation.navigate('ChangePassword');
   return (
     <ScreenContainer>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <TouchableCard
-          title="Gallery"
+          title="Tinder Gallery"
           subtitle="Access all of your photos"
           icon="collections"
           onPress={onViewPhotos}

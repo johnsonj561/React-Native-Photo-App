@@ -15,7 +15,7 @@ export const useSession = () => {
     Auth.signUp(signupData);
 
   const loginUser = async (username: string, password: string) => {
-    const user = await Auth.signIn(username, password);
+    const user = await Auth.signIn(username.trim(), password.trim());
     updateUser(user);
   };
 
