@@ -208,7 +208,7 @@ export class TinderGallery extends React.Component<
     };
     return (
       <ScreenContainer>
-        <View style={StyleSheet.absoluteFill}>
+        <View style={[StyleSheet.absoluteFill, { zIndex: 5 }]}>
           <TinderCard
             key={secondPhoto.node.image.uri}
             uri={secondPhoto.node.image.uri}
@@ -234,5 +234,5 @@ export class TinderGallery extends React.Component<
 }
 
 const TopCard = styled(View)`
-  z-index: 10;
+  z-index: 1000;
 `;
