@@ -10,8 +10,11 @@ import { TouchableCard } from '../../components/touchable-card';
 export interface DashboardProps extends NavigationScreenProps<{}> {}
 
 export const Dashboard = (props: DashboardProps) => {
-  const onViewPhotos = () => props.navigation.navigate('TinderGallery');
+  const onViewTindergallery = () => props.navigation.navigate('TinderGallery');
+  const onViewHorizontalScroll = () =>
+    props.navigation.navigate('AnimatedHorizontalScroll');
   const onChangePassword = () => props.navigation.navigate('ChangePassword');
+  const noop = () => {};
   return (
     <ScreenContainer>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
@@ -19,25 +22,31 @@ export const Dashboard = (props: DashboardProps) => {
           title="Tinder Gallery"
           subtitle="Access all of your photos"
           icon="collections"
-          onPress={onViewPhotos}
+          onPress={onViewTindergallery}
+        />
+        <TouchableCard
+          title="Horizontal Scroll"
+          subtitle="Access all of your photos"
+          icon="collections"
+          onPress={onViewHorizontalScroll}
         />
         <TouchableCard
           title="Photo Map"
           subtitle="View photos from different regions"
           icon="place"
-          onPress={onViewPhotos}
+          onPress={noop}
         />
         <TouchableCard
           title="Cloud Storage"
           subtitle="Set up cloud storage to back up your photos"
           icon="cloud"
-          onPress={onViewPhotos}
+          onPress={noop}
         />
         <TouchableCard
           title="Preferences"
           subtitle="Edit your account settings"
           icon="settings"
-          onPress={onViewPhotos}
+          onPress={noop}
         />
         <TouchableCard
           title="Change Password"

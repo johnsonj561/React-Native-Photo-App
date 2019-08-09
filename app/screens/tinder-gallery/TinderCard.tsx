@@ -4,13 +4,13 @@ import { Card, Text } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 import styled from 'styled-components';
 
-export interface ProfilesProps {
+export interface TinderCardProps {
   uri: any;
   likeOpacity: Animated.Node<number>;
   nopeOpacity: Animated.Node<number>;
 }
 
-const Component = (props: ProfilesProps) => {
+const Component = (props: TinderCardProps) => {
   const { uri, likeOpacity, nopeOpacity } = props;
   const likeStyle = { opacity: likeOpacity };
   const nopeStyle = { opacity: nopeOpacity };

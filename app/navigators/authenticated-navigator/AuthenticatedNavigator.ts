@@ -3,6 +3,7 @@ import { Logout } from '../../screens/logout';
 import { createDrawerNavigator } from 'react-navigation';
 import { ChangePassword } from '../../screens/change-password';
 import { TinderGallery } from '../../screens/tinder-gallery';
+import { AnimatedHorizontalScroll } from '../../screens/animated-horizontal-scroll';
 
 export const AuthenticatedNavigator = createDrawerNavigator(
   {
@@ -10,6 +11,7 @@ export const AuthenticatedNavigator = createDrawerNavigator(
     Logout,
     ChangePassword,
     TinderGallery,
+    AnimatedHorizontalScroll,
   },
   {
     initialRouteName: 'Dashboard',
