@@ -1,40 +1,54 @@
 import React from 'react';
 import { NavigationScreenProps } from 'react-navigation';
 import { Dimensions, Animated, StyleSheet } from 'react-native';
+import { PhotoIdentifier } from '@react-native-community/cameraroll';
 import { ScreenContainer } from '../../components/screen-container';
 import { headerStyle } from '../../theme/header';
-import { PhotoCard, xOffset } from './';
+import { AnimatedCard, xOffset } from './';
+import { withDevicePhotos } from '../../hooks/device-photos';
 
 export const SCREEN_WIDTH = Dimensions.get('screen').width;
 
-export interface Props extends NavigationScreenProps<{}> {}
+export interface Props extends NavigationScreenProps<{}> {
+  photos: PhotoIdentifier[];
+}
 
-export const AnimatedHorizontalScroll = (props: Props) => {
+const Component = (props: Props) => {
+  const { photos } = props;
+  const onScroll = Animated.event(
+    [{ nativeEvent: { contentOffset: { x: xOffset } } }],
+    { useNativeDriver: true }
+  );
   return (
-    <ScreenContainer>
+    <ScreenContainer containerStyle={styles.container}>
       <Animated.ScrollView
         scrollEventThrottle={16}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: xOffset } } }],
-          { useNativeDriver: true }
-        )}
+        onScroll={onScroll}
         horizontal
         pagingEnabled
         style={styles.scrollView}>
-        <PhotoCard text="Screen 1" index={0} />
-        <PhotoCard text="Screen 2" index={1} />
-        <PhotoCard text="Screen 3" index={2} />
+        {/* Render all the photos!!! */}
+        {photos.map((photo, idx) => {
+          const { uri } = photo.node.image;
+          return <AnimatedCard key={uri} uri={uri} index={idx} />;
+        })}
       </Animated.ScrollView>
     </ScreenContainer>
   );
 };
 
-AnimatedHorizontalScroll.navigationOptions = {
+Component.navigationOptions = {
   title: 'Horizontal Photo Animations',
   ...headerStyle,
 };
 
+export const AnimatedHorizontalScroll = withDevicePhotos(Component);
+
 const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+  },
   scrollView: {
     backgroundColor: 'black',
     width: SCREEN_WIDTH,

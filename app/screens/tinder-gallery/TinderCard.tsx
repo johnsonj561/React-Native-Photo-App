@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, ImageBackground as Image, StyleSheet } from 'react-native';
-import { Card, Text } from 'react-native-paper';
+import { View } from 'react-native';
+import { Text } from 'react-native-paper';
 import Animated from 'react-native-reanimated';
 import styled from 'styled-components';
+import { ImageCard } from '../../components/image-card';
 
 export interface TinderCardProps {
-  uri: any;
+  uri: string;
   likeOpacity: Animated.Node<number>;
   nopeOpacity: Animated.Node<number>;
 }
@@ -15,18 +16,16 @@ const Component = (props: TinderCardProps) => {
   const likeStyle = { opacity: likeOpacity };
   const nopeStyle = { opacity: nopeOpacity };
   return (
-    <Card style={StyleSheet.absoluteFill}>
-      <ImageBackground source={{ uri }}>
-        <LabelGroup>
-          <LabelBorder color="#66bb6a" style={likeStyle}>
-            <Label color="#66bb6a">LIKE</Label>
-          </LabelBorder>
-          <LabelBorder color="#ef5350" style={nopeStyle}>
-            <Label color="#ef5350">NOPE</Label>
-          </LabelBorder>
-        </LabelGroup>
-      </ImageBackground>
-    </Card>
+    <ImageCard uri={uri}>
+      <LabelGroup>
+        <LabelBorder color="#66bb6a" style={likeStyle}>
+          <Label color="#66bb6a">LIKE</Label>
+        </LabelBorder>
+        <LabelBorder color="#ef5350" style={nopeStyle}>
+          <Label color="#ef5350">NOPE</Label>
+        </LabelBorder>
+      </LabelGroup>
+    </ImageCard>
   );
 };
 
@@ -36,11 +35,6 @@ Component.defaultProps = {
 };
 
 export const TinderCard = React.memo(Component);
-
-const ImageBackground = styled(Image)`
-  width: 100%;
-  height: 100%;
-`;
 
 const LabelGroup = styled(View)`
   flex-direction: row;

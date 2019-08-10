@@ -1,3 +1,3 @@
 export * from './AnimatedHorizontalScroll';
-export * from './PhotoCard';
+export * from './AnimatedCard';
 export * from './animations';

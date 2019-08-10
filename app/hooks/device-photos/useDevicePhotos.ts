@@ -3,8 +3,10 @@ import CameraRoll, {
   PhotoIdentifier,
 } from '@react-native-community/cameraroll';
 
+const defaultPhotos: PhotoIdentifier[] = [];
+
 export const useDevicePhotos = () => {
-  const [photos, setPhotos] = useState([] as PhotoIdentifier[]);
+  const [photos, setPhotos] = useState(defaultPhotos);
 
   useEffect(() => {
     console.log('Running photos effect');
