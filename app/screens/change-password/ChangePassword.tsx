@@ -16,6 +16,8 @@ import {
 import { useNotification } from '../../hooks/notification/useNotification';
 import { useSession } from '../../hooks/session';
 
+const TITLE = 'Change Password';
+
 export interface ChangePasswordProps extends NavigationScreenProps<{}> {}
 
 export const ChangePassword = (props: ChangePasswordProps) => {
@@ -38,7 +40,7 @@ export const ChangePassword = (props: ChangePasswordProps) => {
   const onCancel = () => props.navigation.navigate('Dashboard');
 
   return (
-    <ScreenContainer>
+    <ScreenContainer title={TITLE}>
       <Title>Change Your Password</Title>
       <CardContainer elevation={2}>
         {/* Input Fields */}
@@ -75,6 +77,6 @@ export const ChangePassword = (props: ChangePasswordProps) => {
 };
 
 ChangePassword.navigationOptions = {
-  title: 'Change Password',
+  title: TITLE,
   ...headerStyle,
 };

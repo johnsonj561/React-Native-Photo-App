@@ -7,6 +7,8 @@ import { Headline } from 'react-native-paper';
 import { ScreenContainer } from '../../components/screen-container';
 import { TouchableCard } from '../../components/touchable-card';
 
+const TITLE = 'Dashboard';
+
 export interface DashboardProps extends NavigationScreenProps<{}> {}
 
 export const Dashboard = (props: DashboardProps) => {
@@ -16,7 +18,7 @@ export const Dashboard = (props: DashboardProps) => {
   const onChangePassword = () => props.navigation.navigate('ChangePassword');
   const noop = () => {};
   return (
-    <ScreenContainer>
+    <ScreenContainer title={TITLE}>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <TouchableCard
           title="Tinder Gallery"
@@ -60,7 +62,7 @@ export const Dashboard = (props: DashboardProps) => {
 };
 
 Dashboard.navigationOptions = {
-  title: 'Dashboard',
+  title: TITLE,
   ...headerStyle,
 };
 

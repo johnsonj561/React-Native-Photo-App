@@ -8,10 +8,10 @@ import { AnimatedHorizontalScroll } from '../../screens/animated-horizontal-scro
 export const AuthenticatedNavigator = createDrawerNavigator(
   {
     Dashboard,
-    Logout,
-    ChangePassword,
     TinderGallery,
     AnimatedHorizontalScroll,
+    ChangePassword,
+    Logout,
   },
   {
     initialRouteName: 'Dashboard',

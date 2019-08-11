@@ -1,5 +1,8 @@
-import React from 'react';
-import { NavigationScreenProps } from 'react-navigation';
+import React, { StatelessComponent } from 'react';
+import {
+  NavigationScreenProps,
+  NavigationScreenOptions,
+} from 'react-navigation';
 import { Dimensions, Animated, StyleSheet } from 'react-native';
 import { PhotoIdentifier } from '@react-native-community/cameraroll';
 import { ScreenContainer } from '../../components/screen-container';
@@ -7,20 +10,22 @@ import { headerStyle } from '../../theme/header';
 import { AnimatedCard, xOffset } from './';
 import { withDevicePhotos } from '../../hooks/device-photos';
 
+const TITLE = 'Photo Gallery';
+
 export const SCREEN_WIDTH = Dimensions.get('screen').width;
 
 export interface Props extends NavigationScreenProps<{}> {
   photos: PhotoIdentifier[];
 }
 
-const Component = (props: Props) => {
+const BaseComponent = (props: Props) => {
   const { photos } = props;
   const onScroll = Animated.event(
     [{ nativeEvent: { contentOffset: { x: xOffset } } }],
     { useNativeDriver: true }
   );
   return (
-    <ScreenContainer containerStyle={styles.container}>
+    <ScreenContainer title={TITLE} padding={false}>
       <Animated.ScrollView
         scrollEventThrottle={16}
         onScroll={onScroll}
@@ -37,12 +42,18 @@ const Component = (props: Props) => {
   );
 };
 
-Component.navigationOptions = {
-  title: 'Horizontal Photo Animations',
+interface NavStatelessComponent extends React.StatelessComponent<Props> {
+  navigationOptions?: Object;
+}
+
+export const AnimatedHorizontalScroll: NavStatelessComponent = withDevicePhotos(
+  React.memo(BaseComponent)
+);
+
+AnimatedHorizontalScroll.navigationOptions = {
+  title: TITLE,
   ...headerStyle,
 };
-
-export const AnimatedHorizontalScroll = withDevicePhotos(Component);
 
 const styles = StyleSheet.create({
   container: {

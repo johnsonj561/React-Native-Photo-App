@@ -20,6 +20,8 @@ import {
 } from 'react-native';
 import { runSpring } from './animations';
 
+const TITLE = 'Tinder Gallery';
+
 const {
   add,
   multiply,
@@ -47,7 +49,6 @@ const toRadians = (angle: number) => angle * (Math.PI / 180);
 const rotatedWidth =
   width * Math.sin(toRadians(90 - 15)) + height * Math.sin(toRadians(15));
 
-// types
 export interface TinderGalleryProps extends NavigationScreenProps<{}> {}
 
 export interface TinderGalleryState {
@@ -59,7 +60,7 @@ export class TinderGallery extends React.Component<
   TinderGalleryState
 > {
   static navigationOptions: any = {
-    title: 'Photo TinderGallery',
+    title: TITLE,
     ...headerStyle,
   };
   translationX: Animated.Value<number> = new Value(0);
@@ -207,7 +208,7 @@ export class TinderGallery extends React.Component<
       transform: [{ translateX }, { translateY }, { rotateZ }],
     };
     return (
-      <ScreenContainer>
+      <ScreenContainer title={TITLE} padding={false}>
         <View style={[StyleSheet.absoluteFill, { zIndex: 5 }]}>
           <TinderCard
             key={secondPhoto.node.image.uri}

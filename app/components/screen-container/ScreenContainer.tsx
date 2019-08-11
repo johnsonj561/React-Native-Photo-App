@@ -7,12 +7,14 @@ import styled from 'styled-components';
 
 export interface ScreenContainerProps extends NavigationScreenProps<{}> {
   children: React.ReactNode;
-  containerStyle?: ViewStyle;
+  title?: string;
+  padding?: boolean;
 }
 
 export const ScreenContainer = withNavigation(
   React.memo((props: ScreenContainerProps) => {
-    const { navigation, containerStyle } = props;
+    console.log('Screen props', props, props.navigation);
+    const { navigation, title, padding } = props;
     return (
       <>
         {/* Only show drawer menu if rendering the drawer navigator */}
@@ -22,24 +24,29 @@ export const ScreenContainer = withNavigation(
               icon="menu"
               onPress={props.navigation.toggleDrawer}
             />
-            <Appbar.Content title={props.navigation.state.routeName} />
+            <Appbar.Content title={title} />
           </Appbar.Header>
         )}
         <StatusBar barStyle="dark-content" />
         <SafeArea>
-          <Container style={containerStyle}>{props.children}</Container>
+          <Container padding={padding}>{props.children}</Container>
         </SafeArea>
       </>
     );
   })
 );
 
+ScreenContainer.defaultProps = {
+  title: '',
+  padding: true,
+};
+
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
 `;
 
-const Container = styled(View)`
+const Container: any = styled(View)`
   flex: 1;
   background-color: ${Colors.lighter};
-  /* padding: 20px 10px; */
+  padding: ${(props: any) => (props.padding ? '20px 10px' : '0px')};
 `;
