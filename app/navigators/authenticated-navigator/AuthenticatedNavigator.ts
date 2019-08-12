@@ -1,15 +1,19 @@
-import { Dashboard } from '../../screens/dashboard';
-import { Logout } from '../../screens/logout';
+import {
+  Dashboard,
+  Logout,
+  ChangePassword,
+  PhotoGallery,
+  PhotoMap,
+  TinderGallery,
+} from '../../screens';
 import { createDrawerNavigator } from 'react-navigation';
-import { ChangePassword } from '../../screens/change-password';
-import { TinderGallery } from '../../screens/tinder-gallery';
-import { AnimatedHorizontalScroll } from '../../screens/animated-horizontal-scroll';
 
 export const AuthenticatedNavigator = createDrawerNavigator(
   {
     Dashboard,
+    PhotoGallery,
     TinderGallery,
-    AnimatedHorizontalScroll,
+    PhotoMap,
     ChangePassword,
     Logout,
   },

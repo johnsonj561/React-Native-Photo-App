@@ -1,25 +1,19 @@
-import React, { StatelessComponent } from 'react';
-import {
-  NavigationScreenProps,
-  NavigationScreenOptions,
-} from 'react-navigation';
+import React from 'react';
+import { NavigationScreenProps } from 'react-navigation';
 import { Dimensions, Animated, StyleSheet } from 'react-native';
-import { PhotoIdentifier } from '@react-native-community/cameraroll';
 import { ScreenContainer } from '../../components/screen-container';
 import { headerStyle } from '../../theme/header';
-import { AnimatedCard, xOffset } from './';
-import { withDevicePhotos } from '../../hooks/device-photos';
+import { AnimatedCard, xOffset } from '.';
+import { useDevicePhotos } from '../../hooks/device-photos';
 
 const TITLE = 'Photo Gallery';
 
 export const SCREEN_WIDTH = Dimensions.get('screen').width;
 
-export interface Props extends NavigationScreenProps<{}> {
-  photos: PhotoIdentifier[];
-}
+export interface Props extends NavigationScreenProps<{}> {}
 
 const BaseComponent = (props: Props) => {
-  const { photos } = props;
+  const { photos } = useDevicePhotos();
   const onScroll = Animated.event(
     [{ nativeEvent: { contentOffset: { x: xOffset } } }],
     { useNativeDriver: true }
@@ -33,10 +27,13 @@ const BaseComponent = (props: Props) => {
         pagingEnabled
         style={styles.scrollView}>
         {/* Render all the photos!!! */}
-        {photos.map((photo, idx) => {
-          const { uri } = photo.node.image;
-          return <AnimatedCard key={uri} uri={uri} index={idx} />;
-        })}
+        {photos.map((photo, idx) => (
+          <AnimatedCard
+            key={photo.node.image.uri}
+            uri={photo.node.image.uri}
+            index={idx}
+          />
+        ))}
       </Animated.ScrollView>
     </ScreenContainer>
   );
@@ -46,11 +43,9 @@ interface NavStatelessComponent extends React.StatelessComponent<Props> {
   navigationOptions?: Object;
 }
 
-export const AnimatedHorizontalScroll: NavStatelessComponent = withDevicePhotos(
-  React.memo(BaseComponent)
-);
+export const PhotoGallery: NavStatelessComponent = React.memo(BaseComponent);
 
-AnimatedHorizontalScroll.navigationOptions = {
+PhotoGallery.navigationOptions = {
   title: TITLE,
   ...headerStyle,
 };

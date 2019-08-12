@@ -139,6 +139,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-maps')
+    implementation project(':react-native-fs')
     implementation project(':@react-native-community_cameraroll')
     implementation project(':react-native-reanimated')
     implementation project(':amazon-cognito-identity-js')
@@ -155,3 +157,9 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'FontAwesome.ttf' ] // Name of the font files you want to copy
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

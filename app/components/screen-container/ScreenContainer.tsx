@@ -29,7 +29,7 @@ export const ScreenContainer = withNavigation(
         )}
         <StatusBar barStyle="dark-content" />
         <SafeArea>
-          <Container padding={padding}>{props.children}</Container>
+          <Container withPadding={padding}>{props.children}</Container>
         </SafeArea>
       </>
     );
@@ -48,5 +48,5 @@ const SafeArea = styled(SafeAreaView)`
 const Container: any = styled(View)`
   flex: 1;
   background-color: ${Colors.lighter};
-  padding: ${(props: any) => (props.padding ? '20px 10px' : '0px')};
+  padding: ${(props: any) => (props.withPadding ? '20px 10px' : '0px')};
 `;

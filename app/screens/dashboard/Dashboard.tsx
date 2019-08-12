@@ -6,20 +6,28 @@ import { headerStyle } from '../../theme/header';
 import { Headline } from 'react-native-paper';
 import { ScreenContainer } from '../../components/screen-container';
 import { TouchableCard } from '../../components/touchable-card';
+import { useNotification } from '../../hooks/notification';
 
 const TITLE = 'Dashboard';
 
 export interface DashboardProps extends NavigationScreenProps<{}> {}
 
 export const Dashboard = (props: DashboardProps) => {
+  const { setNotification } = useNotification();
   const onViewTindergallery = () => props.navigation.navigate('TinderGallery');
-  const onViewHorizontalScroll = () =>
-    props.navigation.navigate('AnimatedHorizontalScroll');
+  const onViewGallery = () => props.navigation.navigate('PhotoGallery');
+  const onViewMaps = () => props.navigation.navigate('PhotoMap');
   const onChangePassword = () => props.navigation.navigate('ChangePassword');
-  const noop = () => {};
+  const noop = () => setNotification('Coming soon!');
   return (
     <ScreenContainer title={TITLE}>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <TouchableCard
+          title="Photo Gallery"
+          subtitle="View your photos"
+          icon="collections"
+          onPress={onViewGallery}
+        />
         <TouchableCard
           title="Tinder Gallery"
           subtitle="Access all of your photos"
@@ -27,16 +35,10 @@ export const Dashboard = (props: DashboardProps) => {
           onPress={onViewTindergallery}
         />
         <TouchableCard
-          title="Horizontal Scroll"
-          subtitle="Access all of your photos"
-          icon="collections"
-          onPress={onViewHorizontalScroll}
-        />
-        <TouchableCard
           title="Photo Map"
           subtitle="View photos from different regions"
           icon="place"
-          onPress={noop}
+          onPress={onViewMaps}
         />
         <TouchableCard
           title="Cloud Storage"

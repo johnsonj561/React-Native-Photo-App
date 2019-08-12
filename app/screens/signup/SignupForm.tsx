@@ -1,7 +1,3 @@
-/**
- * @format
- */
-
 import React, { useState } from 'react';
 import { NavigationScreenProps, NavigationParams } from 'react-navigation';
 import { Button, Card } from 'react-native-paper';

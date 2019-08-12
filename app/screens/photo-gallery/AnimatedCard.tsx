@@ -23,9 +23,5 @@ const styles = StyleSheet.create({
   animatedView: {
     flex: 1,
     width: SCREEN_WIDTH,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // borderRadius: 25,
-    backgroundColor: 'white',
   },
 });

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Auth } from 'aws-amplify';
 import styled from 'styled-components';
 import { Headline } from 'react-native-paper';
 import { ScreenContainer } from '../../components/screen-container';

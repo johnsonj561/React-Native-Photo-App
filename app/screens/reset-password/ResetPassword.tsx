@@ -3,8 +3,7 @@
  */
 
 import React, { useState } from 'react';
-import { NavigationScreenProps, NavigationParams } from 'react-navigation';
-import { Auth } from 'aws-amplify';
+import { NavigationScreenProps } from 'react-navigation';
 import { Title, Button, Card } from 'react-native-paper';
 import { headerStyle } from '../../theme/header';
 import { ScreenContainer } from '../../components/screen-container';
@@ -17,11 +16,6 @@ import { useNotification } from '../../hooks/notification/useNotification';
 import { useSession } from '../../hooks/session';
 
 export interface ResetPasswordProps extends NavigationScreenProps<{}> {}
-
-export const initFormData = {
-  username: '',
-  password: '',
-};
 
 export const ResetPassword = (props: ResetPasswordProps) => {
   const { clearNotification, setNotification } = useNotification();

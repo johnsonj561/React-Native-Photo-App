@@ -9,13 +9,13 @@ export const useDevicePhotos = () => {
   const [photos, setPhotos] = useState(defaultPhotos);
 
   useEffect(() => {
-    console.log('Running photos effect');
     CameraRoll.getPhotos({
       first: 10,
       groupTypes: 'All',
       assetType: 'Photos',
     })
       .then(resp => {
+        console.log('PHOTOS', resp);
         setPhotos(resp.edges);
       })
       .catch(err => console.log(err));

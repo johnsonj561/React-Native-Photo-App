@@ -2,13 +2,11 @@
  * @format
  */
 
-import React, { useState } from 'react';
-import { NavigationScreenProps, NavigationParams } from 'react-navigation';
+import React from 'react';
+import { NavigationScreenProps } from 'react-navigation';
 import { Title } from 'react-native-paper';
 import { headerStyle } from '../../theme/header';
 import { ScreenContainer } from '../../components/screen-container';
-import { useNotification } from '../../hooks/notification/useNotification';
-import { useSession } from '../../hooks/session';
 import { SignupForm } from './';
 
 export interface SignupProps extends NavigationScreenProps<{}> {}

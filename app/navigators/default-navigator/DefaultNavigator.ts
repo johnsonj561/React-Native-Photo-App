@@ -1,8 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import { Signup } from '../../screens/signup';
-import { ConfirmAccount } from '../../screens/confirm-account';
-import { Login } from '../../screens/login';
-import { ResetPassword } from '../../screens/reset-password';
+import { Signup, ConfirmAccount, Login, ResetPassword } from '../../screens';
 
 export const DefaultNavigator = createStackNavigator(
   {
