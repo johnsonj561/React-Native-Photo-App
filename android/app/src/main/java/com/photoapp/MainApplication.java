@@ -3,7 +3,7 @@ package com.photoapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.airbnb.android.react.maps.MapsPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.rnfs.RNFSPackage;
 import com.reactnativecommunity.cameraroll.CameraRollPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
@@ -29,7 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
-            new MapsPackage(), new RNFSPackage(), new CameraRollPackage(),
+            new ReactNativeConfigPackage(), new RNFSPackage(), new CameraRollPackage(),
           new ReanimatedPackage(), new RNAWSCognitoPackage(), new RNGestureHandlerPackage(), new VectorIconsPackage());
     }
 
